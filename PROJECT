@@ -1,0 +1,10 @@
+domain: example.org
+repo: github.com/samze/reconciler-runtime-test
+resources:
+- group: test
+  kind: Foo
+  version: v1alpha1
+- group: test
+  kind: Bar
+  version: v1alpha1
+version: "2"
