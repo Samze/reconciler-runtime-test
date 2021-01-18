@@ -50,10 +50,10 @@ func SecretChildReconciler(c reconcilers.Config) reconcilers.SubReconciler {
 		DesiredChild: func(ctx context.Context, parent *testv1alpha1.Bar) (*corev1.Secret, error) {
 			secret := &corev1.Secret{
 				ObjectMeta: metav1.ObjectMeta{
-					Labels:       parent.Labels,
-					Annotations:  make(map[string]string),
-					GenerateName: fmt.Sprintf("%s-secret", parent.Name),
-					Namespace:    parent.Namespace,
+					Labels:      parent.Labels,
+					Annotations: make(map[string]string),
+					Name:        fmt.Sprintf("%s-secret", parent.Name),
+					Namespace:   parent.Namespace,
 				},
 				Data: map[string][]byte{"secret": []byte("123")},
 			}
