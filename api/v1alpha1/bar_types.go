@@ -36,7 +36,8 @@ type BarSpec struct {
 type BarStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+	ObservedGeneration int64  `json:"observedGeneration,omitempty"`
+	FooStatus          string `json:"fooStatus,omitempty"`
 }
 
 // +kubebuilder:object:root=true

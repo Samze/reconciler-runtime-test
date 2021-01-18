@@ -44,6 +44,8 @@ spec:
           status:
             description: BarStatus defines the observed state of Bar
             properties:
+              fooStatus:
+                type: string
               observedGeneration:
                 description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
                   of cluster Important: Run "make" to regenerate code after modifying

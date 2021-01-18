@@ -35,6 +35,7 @@ func BarReconciler(c reconcilers.Config) *reconcilers.ParentReconciler {
 		Type: &testv1alpha1.Bar{},
 		Reconciler: reconcilers.Sequence{
 			SecretChildReconciler(c),
+			FooReconciler(c),
 		},
 
 		Config: c,
@@ -91,5 +92,17 @@ func SecretChildReconciler(c reconcilers.Config) reconcilers.SubReconciler {
 
 		Config:     c,
 		IndexField: ".metadata.secretController",
+	}
+}
+
+func FooReconciler(c reconcilers.Config) reconcilers.SubReconciler {
+	c.Log = c.Log.WithName("Foo")
+
+	return &reconcilers.SyncReconciler{
+		Sync: func(ctx context.Context, parent *testv1alpha1.Bar) error {
+			parent.Status.FooStatus = parent.Spec.Foo
+			return nil
+		},
+		Config: c,
 	}
 }
